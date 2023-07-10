@@ -55,7 +55,35 @@ const (
 //						   use it.  See github.com/spf13/cobra for information
 //						   on how to use it.
 //
-//	 YOUR ANSWER: <GOES HERE>
+/*	 YOUR ANSWER: The function first sets up 7 different flags, which are key-valued
+strings added after the name of the command. For example, the first BoolVar sets up
+a pointer called listFlag to define a Boolean flag called l. The second parameter to
+this function, false, defines the default value for this flag if it is not provided.
+Finally, "List all the items in the database" is a string of documentation that can
+be printed as a usage message.
+				Next, the flag.Parse function after defining the flags is a function
+that uses this pointer to set the bool variable based on the flags passed in by the
+user. We are then able to check the value of this bool pointer by dereferencing the
+pointer.
+
+				Then, there is an if condition to check if there is 1 argument, and
+if there is, the program shows help and returns appOpt, which is set to INVALID_APP_OPT
+and a new error that says "no flags were set"
+
+				Following that is a flag.Visit function that loops over all the
+flags and checks through all of them to see if anyone of them is entered. For example,
+if "-l" is entered in command line, the value of appOpt is set to LIST_DB_ITEM for
+use in the main function. Similarly, if "-q" is entered, appOpt is set to QUERY_DB_ITEM.
+If none of the cases are entered, appOpt is set to the default value of INVALID_APP_OPT.
+
+				Finally, there is an if condition to check if the final appOpt is set to
+INVALID_APP_OPT from earlier cases. If it is, the program prints the error line along
+with the usage (description of each flag). Finally, the function returns the appOpt with
+a new error.
+
+				Otherwise, the function returns the appOpt that is set earlier with no
+error messages.
+*/
 func processCmdLineFlags() (AppOptType, error) {
 	flag.StringVar(&dbFileNameFlag, "db", "./data/todo.json", "Name of the database file")
 
