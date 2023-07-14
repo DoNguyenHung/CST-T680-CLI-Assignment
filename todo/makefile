@@ -35,4 +35,4 @@ restore-db-windows:
 
 .PHONY: add-sample
 add-sample:
-	go run main.go -a '{ "id":99, "title":"sample item", "done":true}'
+	go run main.go -a "{ \"id\":99, \"title\":\"sample item\", \"done\":true}"
